@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import PostCard from '@components/PostCard.astro';
+import ProfileCard from '@components/ProfileCard.astro';
+
+export async function getStaticPaths() {
+  const categories = ['Paper Notes', 'Tech Talk', 'Fun Products', 'Hobbies'];
+  return categories.map(category => ({
+    params: { category },
+  }));
+}
+
+const { category } = Astro.params;
+
+// Get all posts for this category
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.category === category;
+});
+
+const sortedPosts = allPosts.sort((a, b) => 
+  b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const categoryEmojis: Record<string, string> = {
+  'Paper Notes': '📝',
+  'Tech Talk': '💻',
+  'Fun Products': '🎮',
+  'Hobbies': '🎨',
+};
+
+const categoryDescriptions: Record<string, string> = {
+  'Paper Notes': 'Deep dives into research papers and academic insights',
+  'Tech Talk': 'Discussions about technology, programming, and development',
+  'Fun Products': 'Reviews and thoughts on interesting products and gadgets',
+  'Hobbies': 'Personal interests, hobbies, and creative pursuits',
+};
+---
+
+<Layout title={`${category} - Anime Blog`} description={categoryDescriptions[category!]}>
+  <div class="container mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Main content -->
+      <div class="lg:col-span-2">
+        <!-- Category header -->
+        <div class="mb-12 backdrop-blur-md bg-white/70 rounded-3xl p-8 shadow-lg border border-pink-200/30">
+          <div class="text-6xl mb-4">{categoryEmojis[category!]}</div>
+          <h1 class="text-4xl font-bold mb-4 text-gray-800">
+            {category}
+          </h1>
+          <p class="text-gray-700 text-lg">
+            {categoryDescriptions[category!]}
+          </p>
+          <div class="mt-4 text-sm text-gray-600">
+            {sortedPosts.length} {sortedPosts.length === 1 ? 'post' : 'posts'}
+          </div>
+        </div>
+
+        <!-- Posts grid -->
+        {sortedPosts.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {sortedPosts.map((post) => (
+              <PostCard
+                title={post.data.title}
+                description={post.data.description}
+                pubDate={post.data.pubDate}
+                coverImage={post.data.coverImage}
+                tags={post.data.tags}
+                category={post.data.category}
+                slug={post.slug}
+              />
+            ))}
+          </div>
+        ) : (
+          <div class="backdrop-blur-md bg-white/70 rounded-3xl p-12 shadow-lg border border-pink-200/30 text-center">
+            <div class="text-6xl mb-4">🌸</div>
+            <p class="text-gray-600 text-lg">
+              No posts in this category yet. Stay tuned!
+            </p>
+          </div>
+        )}
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-1">
+        <ProfileCard />
+      </div>
+    </div>
+  </div>
+</Layout>
