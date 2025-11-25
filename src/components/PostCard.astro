@@ -12,10 +12,10 @@ interface Props {
 const { title, description, pubDate, coverImage, tags, category, slug } = Astro.props;
 
 const categoryColors: Record<string, string> = {
-  'Paper Notes': 'bg-blue-100 text-blue-700',
-  'Tech Talk': 'bg-purple-100 text-purple-700',
-  'Fun Products': 'bg-pink-100 text-pink-700',
-  'Hobbies': 'bg-green-100 text-green-700',
+  'Paper Notes': 'bg-cyber-slate border-cyber-blue text-cyber-blue',
+  'Tech Talk': 'bg-cyber-slate border-cyber-purple text-cyber-purple',
+  'Fun Products': 'bg-cyber-slate border-cyber-pink text-cyber-pink',
+  'Hobbies': 'bg-cyber-slate border-cyber-green text-cyber-green',
 };
 
 const formattedDate = new Intl.DateTimeFormat('zh-CN', {
@@ -25,49 +25,56 @@ const formattedDate = new Intl.DateTimeFormat('zh-CN', {
 }).format(pubDate);
 ---
 
-<article class="group backdrop-blur-md bg-white/70 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-pink-200/30">
+<article class="group backdrop-blur-md bg-cyber-slate/50 overflow-hidden shadow-lg hover:shadow-neon-cyan transition-all duration-300 hover:-translate-y-1 border border-cyber-cyan/30 hover:border-cyber-cyan relative">
+  <!-- Glitch effect overlay on hover -->
+  <div class="absolute inset-0 bg-cyber-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+  
   {coverImage && (
-    <div class="relative h-48 overflow-hidden">
+    <div class="relative h-48 overflow-hidden border-b border-cyber-cyan/30">
       <img 
         src={coverImage} 
         alt={title}
-        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        style="filter: grayscale(30%) contrast(1.2);"
       />
+      <div class="absolute inset-0 bg-gradient-to-t from-cyber-void/80 to-transparent"></div>
       <div class="absolute top-4 right-4">
-        <span class={`px-3 py-1 rounded-full text-xs font-semibold ${categoryColors[category]}`}>
-          {category}
+        <span class={`px-3 py-1 border text-xs font-mono uppercase tracking-wider ${categoryColors[category]}`}>
+          [{category}]
         </span>
       </div>
     </div>
   )}
   
-  <div class="p-6">
+  <div class="p-6 relative">
     {!coverImage && (
       <div class="mb-3">
-        <span class={`px-3 py-1 rounded-full text-xs font-semibold ${categoryColors[category]}`}>
-          {category}
+        <span class={`px-3 py-1 border text-xs font-mono uppercase tracking-wider ${categoryColors[category]}`}>
+          [{category}]
         </span>
       </div>
     )}
     
     <a href={`/blog/${slug}`} class="block">
-      <h3 class="text-2xl font-bold mb-2 text-gray-800 group-hover:text-pink-500 transition-colors">
+      <h3 class="text-2xl font-display font-bold mb-2 text-cyber-cyan group-hover:text-cyber-purple transition-colors uppercase tracking-wide">
         {title}
       </h3>
     </a>
     
-    <p class="text-gray-600 mb-4 line-clamp-3">
+    <p class="text-gray-400 mb-4 line-clamp-3 font-mono text-sm">
       {description}
     </p>
     
-    <div class="flex items-center justify-between text-sm">
-      <time class="text-gray-500">{formattedDate}</time>
+    <div class="flex items-center justify-between text-sm border-t border-cyber-cyan/20 pt-4">
+      <time class="text-gray-500 font-mono flex items-center gap-2">
+        <span class="text-cyber-purple">//</span> {formattedDate}
+      </time>
     </div>
     
     {tags.length > 0 && (
       <div class="mt-4 flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <span class="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-medium">
+          <span class="px-3 py-1 bg-cyber-void border border-cyber-cyan/40 text-cyber-cyan text-xs font-mono hover:shadow-neon-cyan transition-all">
             #{tag}
           </span>
         ))}

@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'An Anime-themed blog about tech, papers, and hobbies' } = Astro.props;
+const { title, description = 'Huggin\'s Tech Nexus - Exploring technology, code, and digital creativity with cyberpunk aesthetics' } = Astro.props;
 
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
@@ -21,12 +21,12 @@ import Footer from '@components/Footer.astro';
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>{title}</title>
   </head>
   <body>
     <Header />
-    <main class="min-h-screen">
+    <main class="min-h-screen relative z-10">
       <slot />
     </main>
     <Footer />

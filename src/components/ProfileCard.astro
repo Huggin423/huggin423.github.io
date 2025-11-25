@@ -1,41 +1,76 @@
 ---
-// ProfileCard.astro
+// ProfileCard.astro - Cyberpunk Terminal Edition
 ---
 
-<aside class="sticky top-24 backdrop-blur-md bg-white/70 rounded-3xl p-6 shadow-lg border border-pink-200/30">
-  <div class="text-center">
-    <!-- Avatar placeholder - ready for anime avatar -->
-    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-pink-200 to-purple-200 flex items-center justify-center overflow-hidden">
-      <div class="w-full h-full bg-gradient-to-br from-pink-300 to-purple-300 flex items-center justify-center text-6xl">
-        🌸
+<aside class="sticky top-24 backdrop-blur-md bg-cyber-slate/50 p-6 shadow-neon-cyan border border-cyber-cyan/50 relative overflow-hidden">
+  <!-- Terminal header bar -->
+  <div class="absolute top-0 left-0 right-0 h-8 bg-cyber-void/80 border-b border-cyber-cyan/30 flex items-center px-3 gap-2">
+    <div class="w-3 h-3 rounded-full bg-cyber-pink"></div>
+    <div class="w-3 h-3 rounded-full bg-cyber-purple"></div>
+    <div class="w-3 h-3 rounded-full bg-cyber-cyan"></div>
+    <span class="ml-2 text-xs font-mono text-gray-500">terminal://profile</span>
+  </div>
+
+  <div class="mt-6">
+    <!-- Avatar terminal style -->
+    <div class="w-32 h-32 mx-auto mb-4 border-2 border-cyber-cyan flex items-center justify-center overflow-hidden bg-cyber-void relative group">
+      <div class="absolute inset-0 bg-gradient-to-br from-cyber-cyan/20 to-cyber-purple/20"></div>
+      <div class="w-full h-full flex items-center justify-center text-6xl relative z-10 font-mono text-cyber-cyan">
+        &gt;_
+      </div>
+      <div class="absolute inset-0 border border-cyber-purple/50 scale-105 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+    </div>
+    
+    <h2 class="text-2xl font-display font-bold mb-2 text-cyber-cyan text-center uppercase tracking-wider text-glow-cyan">
+      &lt;Huggin /&gt;
+    </h2>
+    
+    <p class="text-gray-400 text-sm mb-4 text-center font-mono">
+      <span class="text-cyber-purple">$</span> Developer <span class="text-cyber-cyan">|</span> Tech Explorer <span class="text-cyber-cyan">|</span> Creator
+    </p>
+    
+    <div class="border-t border-cyber-cyan/30 pt-4 mb-4">
+      <div class="bg-cyber-void/50 p-3 border-l-2 border-cyber-purple">
+        <p class="text-gray-400 text-sm leading-relaxed font-mono">
+          <span class="text-cyber-cyan">&gt;&gt;</span> Welcome to my digital domain.
+          Exploring tech, code, and the cyberpunk frontier.
+        </p>
       </div>
     </div>
     
-    <h2 class="text-2xl font-bold mb-2 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
-      Your Name
-    </h2>
-    
-    <p class="text-gray-600 text-sm mb-4">
-      Anime enthusiast | Tech lover | Creator
-    </p>
-    
-    <div class="border-t border-pink-200/50 pt-4">
-      <p class="text-gray-700 text-sm leading-relaxed">
-        Welcome to my little corner of the internet! ✨ Here I share my thoughts on tech, anime, and everything in between.
-      </p>
+    <!-- System stats -->
+    <div class="mb-4 space-y-2 font-mono text-xs">
+      <div class="flex justify-between items-center text-gray-500">
+        <span><span class="text-cyber-cyan">STATUS:</span></span>
+        <span class="text-cyber-green flex items-center gap-1">
+          <span class="w-2 h-2 bg-cyber-green rounded-full animate-pulse"></span>
+          ONLINE
+        </span>
+      </div>
+      <div class="flex justify-between items-center text-gray-500">
+        <span><span class="text-cyber-cyan">MODE:</span></span>
+        <span class="text-cyber-purple">CREATIVE</span>
+      </div>
     </div>
     
-    <!-- Social links placeholder -->
+    <!-- Social links - terminal style -->
     <div class="mt-6 flex justify-center space-x-4">
-      <a href="#" class="w-10 h-10 rounded-full bg-pink-100 hover:bg-pink-200 flex items-center justify-center transition-colors">
-        <span class="text-pink-500">𝕏</span>
+      <a href="https://github.com/Huggin423" target="_blank" rel="noopener noreferrer" class="w-10 h-10 border border-cyber-purple/50 hover:border-cyber-purple hover:shadow-neon-purple flex items-center justify-center transition-all group" title="GitHub">
+        <span class="text-cyber-purple group-hover:text-white font-mono font-bold">GH</span>
       </a>
-      <a href="#" class="w-10 h-10 rounded-full bg-purple-100 hover:bg-purple-200 flex items-center justify-center transition-colors">
-        <span class="text-purple-500">GH</span>
+      <a href="#" class="w-10 h-10 border border-cyber-cyan/50 hover:border-cyber-cyan hover:shadow-neon-cyan flex items-center justify-center transition-all group" title="Twitter/X">
+        <span class="text-cyber-cyan group-hover:text-white font-mono font-bold">X</span>
       </a>
-      <a href="#" class="w-10 h-10 rounded-full bg-blue-100 hover:bg-blue-200 flex items-center justify-center transition-colors">
-        <span class="text-blue-500">✉</span>
+      <a href="#" class="w-10 h-10 border border-cyber-blue/50 hover:border-cyber-blue hover:shadow-neon-cyan flex items-center justify-center transition-all group" title="Email">
+        <span class="text-cyber-blue group-hover:text-white font-mono font-bold">@</span>
       </a>
+    </div>
+
+    <!-- Terminal prompt -->
+    <div class="mt-6 pt-4 border-t border-cyber-cyan/30">
+      <p class="font-mono text-xs text-gray-600">
+        <span class="text-cyber-green">huggin@nexus</span><span class="text-gray-500">:</span><span class="text-cyber-cyan">~</span><span class="text-gray-500">$</span> <span class="animate-pulse">_</span>
+      </p>
     </div>
   </div>
 </aside>

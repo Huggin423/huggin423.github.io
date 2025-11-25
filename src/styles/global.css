@@ -4,12 +4,13 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50;
+    @apply bg-cyber-void text-gray-100;
     background-attachment: fixed;
     min-height: 100vh;
+    position: relative;
   }
 
-  /* Optional: Add a subtle pattern overlay */
+  /* Cyberpunk grid pattern overlay */
   body::before {
     content: '';
     position: fixed;
@@ -19,11 +20,31 @@
     height: 100%;
     opacity: 0.03;
     background-image: 
-      radial-gradient(circle at 20% 50%, rgba(255, 182, 193, 0.4) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(173, 216, 230, 0.4) 0%, transparent 50%),
-      radial-gradient(circle at 40% 20%, rgba(221, 160, 221, 0.4) 0%, transparent 50%);
+      linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
+  }
+
+  /* Animated scan line effect */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(0, 255, 255, 0.8),
+      transparent
+    );
+    opacity: 0.3;
+    animation: scanLine 8s linear infinite;
+    pointer-events: none;
+    z-index: 100;
   }
 }
 
@@ -34,26 +55,42 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF;
+  }
+
+  .text-glow-purple {
+    text-shadow: 0 0 10px #BC13FE, 0 0 20px #BC13FE, 0 0 30px #BC13FE;
+  }
+
+  .border-glow {
+    box-shadow: 0 0 5px currentColor, inset 0 0 5px currentColor;
+  }
 }
 
-/* Markdown content styling */
+/* Markdown content styling - Cyberpunk Edition */
 .prose {
-  @apply max-w-none;
+  @apply max-w-none text-gray-300;
 }
 
 .prose h1,
 .prose h2,
 .prose h3,
 .prose h4 {
-  @apply font-bold text-gray-800;
+  @apply font-display font-bold text-cyber-cyan;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .prose h1 {
-  @apply text-4xl mb-4;
+  @apply text-4xl mb-4 text-glow-cyan;
 }
 
 .prose h2 {
   @apply text-3xl mb-3 mt-8;
+  border-bottom: 2px solid #BC13FE;
+  padding-bottom: 0.5rem;
 }
 
 .prose h3 {
@@ -61,23 +98,44 @@
 }
 
 .prose p {
-  @apply text-gray-700 leading-relaxed mb-4;
+  @apply text-gray-400 leading-relaxed mb-4;
 }
 
 .prose a {
-  @apply text-pink-500 hover:text-pink-600 underline;
+  @apply text-cyber-cyan hover:text-cyber-purple no-underline relative;
+  transition: all 0.3s ease;
+}
+
+.prose a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.prose a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+  box-shadow: 0 0 10px currentColor;
 }
 
 .prose code {
-  @apply bg-pink-50 text-pink-700 px-2 py-1 rounded text-sm;
+  @apply bg-cyber-slate text-cyber-cyan px-2 py-1 font-mono text-sm border border-cyber-cyan/30;
 }
 
 .prose pre {
-  @apply bg-gray-900 text-gray-100 p-4 rounded-xl overflow-x-auto mb-4;
+  @apply bg-cyber-darkslate text-gray-100 p-4 overflow-x-auto mb-4 border-l-4 border-cyber-cyan;
+  box-shadow: inset 0 0 20px rgba(0, 255, 255, 0.1);
 }
 
 .prose pre code {
-  @apply bg-transparent text-gray-100 p-0;
+  @apply bg-transparent text-gray-100 p-0 border-0;
 }
 
 .prose ul,
@@ -89,12 +147,16 @@
   @apply mb-2;
 }
 
+.prose li::marker {
+  @apply text-cyber-purple;
+}
+
 .prose blockquote {
-  @apply border-l-4 border-pink-300 pl-4 italic text-gray-600 my-4;
+  @apply border-l-4 border-cyber-purple pl-4 italic text-gray-400 my-4 bg-cyber-slate/30 py-2;
 }
 
 .prose img {
-  @apply rounded-2xl shadow-lg my-6;
+  @apply shadow-neon-cyan my-6 border border-cyber-cyan/20;
 }
 
 .prose table {
@@ -103,9 +165,19 @@
 
 .prose th,
 .prose td {
-  @apply border border-gray-300 px-4 py-2;
+  @apply border border-cyber-cyan/30 px-4 py-2;
 }
 
 .prose th {
-  @apply bg-pink-50 font-semibold;
+  @apply bg-cyber-slate font-mono font-semibold text-cyber-cyan uppercase tracking-wider text-sm;
 }
+
+.prose td {
+  @apply font-mono text-sm;
+}
+
+.prose tr:hover td {
+  @apply bg-cyber-slate/50;
+  transition: background-color 0.2s ease;
+}
+

@@ -8,11 +8,11 @@ const menuItems = [
 ];
 ---
 
-<header class="sticky top-0 z-50 backdrop-blur-md bg-white/70 border-b border-pink-200/50">
+<header class="sticky top-0 z-50 backdrop-blur-md bg-cyber-void/90 border-b border-cyber-cyan/30">
   <nav class="container mx-auto px-6 py-4">
     <div class="flex items-center justify-between">
-      <a href="/" class="text-2xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent hover:from-pink-500 hover:to-purple-500 transition-all">
-        ✨ Anime Blog
+      <a href="/" class="text-2xl font-display font-bold text-cyber-cyan hover:text-cyber-purple transition-all uppercase tracking-wider text-glow-cyan">
+        <span class="inline-block hover:animate-flicker">⚡</span> Huggin's Tech Nexus
       </a>
       
       <ul class="hidden md:flex space-x-1">
@@ -20,17 +20,17 @@ const menuItems = [
           <li>
             <a 
               href={item.href}
-              class="px-4 py-2 rounded-full hover:bg-pink-100/50 transition-all text-gray-700 hover:text-pink-500 font-medium"
+              class="px-4 py-2 border border-transparent hover:border-cyber-cyan hover:shadow-neon-cyan transition-all text-gray-300 hover:text-cyber-cyan font-mono text-sm uppercase tracking-wide"
             >
-              {item.name}
+              &gt; {item.name}
             </a>
           </li>
         ))}
       </ul>
 
       <!-- Mobile menu button -->
-      <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-pink-100/50">
-        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button id="mobile-menu-button" class="md:hidden p-2 border border-cyber-cyan/50 hover:border-cyber-cyan hover:shadow-neon-cyan transition-all">
+        <svg class="w-6 h-6 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
@@ -43,9 +43,9 @@ const menuItems = [
           <li>
             <a 
               href={item.href}
-              class="block px-4 py-2 rounded-xl hover:bg-pink-100/50 transition-all text-gray-700 hover:text-pink-500"
+              class="block px-4 py-2 border border-cyber-cyan/30 hover:border-cyber-cyan hover:bg-cyber-slate/50 hover:shadow-neon-cyan transition-all text-gray-300 hover:text-cyber-cyan font-mono"
             >
-              {item.name}
+              &gt; {item.name}
             </a>
           </li>
         ))}
