@@ -1,3 +1,10 @@
+---
+title: 'OmniLottie：多模态生成 Lottie 动画的新框架'
+pubDate: 2025-01-15
+description: 'OmniLottie 是一种新的生成矢量动画 Lottie 文件的框架，支持文本、图片、视频等多模态输入。'
+tags: ['AI', 'Animation', 'Lottie', 'Machine Learning']
+category: 'Paper Notes'
+---
 ## OmniLottie
 
 OmniLottie是一种新的生成矢量动画Lottie文件的框架。用户可以根据多模态输入（文本、文本+图片、视频）获得相应的Json文件。论文认为，现有的方法大多是生成栅格动画（raster vedios?）（像素点），不可编辑；直接让大模型生成LottieJson容易失败或不令人满意：
