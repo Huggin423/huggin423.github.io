@@ -1,3 +1,11 @@
+---
+title: "Lottreditor"
+pubDate: 2024-01-15
+description: "Lottreditor - A tool for lottery editing and management"
+tags: ["tool", "lottery", "editor"]
+category: "Tech Talk"
+---
+
 ## Lottreditor:
 
 ### Predy 前生探索
