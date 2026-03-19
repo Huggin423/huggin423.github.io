@@ -4,12 +4,14 @@ const menuItems = [
   { name: '文章', href: '/posts' },
   { name: '关于', href: '/about' },
 ];
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <header class="sticky top-0 z-50 bg-white border-b border-gray-200">
   <nav class="container mx-auto px-6 py-4">
     <div class="flex items-center justify-between">
-      <a href="/" class="text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+      <a href={baseUrl} class="text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
         Huggin's Blog
       </a>
       

@@ -25,6 +25,8 @@ const formattedDate = new Intl.DateTimeFormat('zh-CN', {
   month: 'long',
   day: 'numeric'
 }).format(entry.data.pubDate);
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <Layout title={entry.data.title} description={entry.data.description}>
@@ -79,7 +81,7 @@ const formattedDate = new Intl.DateTimeFormat('zh-CN', {
     <!-- Back to home link -->
     <div class="mt-8">
       <a 
-        href="/"
+        href={baseUrl}
         class="text-primary-600 hover:text-primary-700 font-medium"
       >
         ← 返回首页
