@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import PostCard from '@components/PostCard.astro';
 import ProfileCard from '@components/ProfileCard.astro';
+import CategoryNav from '@components/CategoryNav.astro';
 
 // Get all blog posts sorted by date
 const allPosts = await getCollection('blog');
@@ -25,6 +26,9 @@ const sortedPosts = allPosts.sort((a, b) =>
             记录技术探索、学习笔记和生活感悟。
           </p>
         </div>
+
+        <!-- Category Navigation -->
+        <CategoryNav />
 
         <!-- Latest posts -->
         <div class="mb-8">

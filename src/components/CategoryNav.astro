@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+
+// Define categories with their display info
+const categories = [
+  { name: 'Paper Notes', icon: '📚', description: '论文笔记' },
+  { name: 'Tech Talk', icon: '💻', description: '技术讨论' },
+  { name: 'Fun Products', icon: '🛠️', description: '有趣产品' },
+  { name: 'Hobbies', icon: '🎨', description: '个人爱好' },
+];
+
+// Get all posts to count per category
+const allPosts = await getCollection('blog');
+
+// Count posts per category
+const categoryCounts = categories.map(cat => ({
+  ...cat,
+  count: allPosts.filter(post => post.data.category === cat.name).length
+}));
+---
+
+<div class="mb-8">
+  <h2 class="text-xl font-bold mb-4 text-gray-900">
+    分类导航
+  </h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {categoryCounts.map((cat) => (
+      <a 
+        href={`/category/${encodeURIComponent(cat.name)}`}
+        class="group bg-white border border-gray-200 rounded-lg p-4 hover:border-blue-400 hover:shadow-md transition-all duration-200"
+      >
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">{cat.icon}</span>
+          <div>
+            <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+              {cat.name}
+            </h3>
+            <p class="text-xs text-gray-500">{cat.description}</p>
+          </div>
+        </div>
+        <div class="mt-2 text-right">
+          <span class="text-sm text-gray-400">
+            {cat.count} 篇文章
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</div>
