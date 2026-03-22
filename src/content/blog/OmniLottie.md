@@ -1,6 +1,6 @@
 ---
 title: 'OmniLottie：多模态生成 Lottie 动画的新框架'
-pubDate: 2025-01-15
+pubDate: 2026-03-15
 description: 'OmniLottie 是一种新的生成矢量动画 Lottie 文件的框架，支持文本、图片、视频等多模态输入。'
 tags: ['AI', 'Animation', 'Lottie', 'Machine Learning']
 category: 'Paper Notes'

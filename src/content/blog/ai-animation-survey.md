@@ -3,7 +3,7 @@ title: 'AI 生成动画技术调查：SVG 与 Spine'
 pubDate: 2026-03-18
 description: '调查当前 AI 生成结构化动画数据（SVG 动画、Spine 骨骼动画）的主要技术路线，对比各方法的原理、优劣与工程可行性。'
 tags: ['AI', 'Animation', 'SVG', 'Spine', 'Survey']
-category: 'Paper Notes'
+category: 'Tech Talk'
 ---
 
 ## 背景与问题定义

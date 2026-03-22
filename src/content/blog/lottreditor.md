@@ -1,6 +1,6 @@
 ---
 title: "Lottreditor"
-pubDate: 2024-01-15
+pubDate: 2026-03-15
 description: "Lottreditor - A tool for lottery editing and management"
 tags: ["tool", "lottery", "editor"]
 category: "Tech Talk"
