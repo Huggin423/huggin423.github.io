@@ -3,7 +3,7 @@ title: '降临'
 pubDate: 2026-03-22
 description: '《降临》电影影评——关于语言、时间与爱的哲学思考'
 tags: ['电影', '降临', '科幻', '影评']
-category: '随笔'
+category: 'Hobbies'
 ---
 
 > Despite knowing the journey and where it leads, I embrace it and I welcome every moment of it.
