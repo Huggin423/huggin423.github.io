@@ -1,0 +1,65 @@
+---
+// Giscus 评论组件
+// 配置文档: https://giscus.app/zh-CN
+
+// 注意：部署前需要在 GitHub 上启用 Discussions 功能
+// 并访问 https://giscus.app/zh-CN 获取以下配置值
+
+interface Props {
+  // 是否显示评论（默认 true）
+  showComment?: boolean;
+}
+
+const { showComment = true } = Astro.props;
+
+// ============ Giscus 配置 ============
+// 请将以下值替换为你的实际配置（从 giscus.app 获取）
+const giscusConfig = {
+  repo: 'Huggin423/huggin423.github.io', // 你的 GitHub 用户名/仓库名
+  repoId: 'R_kgDORrIPBw', // 从 giscus.app 获取，如: 'R_kgDONxxxxxx'
+  category: 'General', // Discussions 分类名
+  categoryId: 'DIC_kwDORrIPB84C4_6J', // 从 giscus.app 获取
+  mapping: 'pathname', // 评论映射方式: pathname | url | title | og:title
+  strict: '0',
+  reactionsEnabled: '1',
+  emitMetadata: '0',
+  inputPosition: 'bottom', // 评论框位置: top | bottom
+  theme: 'light', // 主题: light | dark | preferred_color_scheme
+  lang: 'zh-CN', // 语言
+};
+// =====================================
+---
+
+{showComment && (
+  <div class="giscus-container mt-8 pt-8 border-t border-gray-200">
+    <script is:inline define:vars={{ giscusConfig }}>
+      const config = giscusConfig;
+      if (config.repoId && config.categoryId) {
+        const script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js';
+        script.setAttribute('data-repo', config.repo);
+        script.setAttribute('data-repo-id', config.repoId);
+        script.setAttribute('data-category', config.category);
+        script.setAttribute('data-category-id', config.categoryId);
+        script.setAttribute('data-mapping', config.mapping);
+        script.setAttribute('data-strict', config.strict);
+        script.setAttribute('data-reactions-enabled', config.reactionsEnabled);
+        script.setAttribute('data-emit-metadata', config.emitMetadata);
+        script.setAttribute('data-input-position', config.inputPosition);
+        script.setAttribute('data-theme', config.theme);
+        script.setAttribute('data-lang', config.lang);
+        script.setAttribute('crossorigin', 'anonymous');
+        script.async = true;
+        document.currentScript.parentElement.appendChild(script);
+      } else {
+        console.warn('Giscus: repoId 或 categoryId 未配置，请访问 https://giscus.app/zh-CN 获取配置');
+      }
+    </script>
+  </div>
+)}
+
+<style>
+  .giscus-container {
+    min-height: 200px;
+  }
+</style>
